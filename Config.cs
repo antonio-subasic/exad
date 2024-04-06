@@ -6,7 +6,7 @@ namespace Exad.Config;
 public class Config
 {
     [JsonIgnore]
-    public static string Folder = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".exad");
+    public static string Folder = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".config", "exad");
 
     [JsonIgnore]
     public static string Path = System.IO.Path.Combine(Folder, "config.json");
