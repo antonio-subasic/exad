@@ -8,7 +8,7 @@ It is built for the [HTBLA Leonding](https://www.htl-leonding.at), but should al
 
 # Setup
 
-1. Download the [source code](https://github.com/antonio-subasic/exad/archive/refs/heads/main.zip)
+1. Download the [source code](https://github.com/antoniosubasic/exad/archive/refs/heads/main.zip)
 1. Unzip the folder
 1. Run `dotnet run -- config` to generate the config file located in `~/.exad/config.json`
 1. In the `config.json` configure the following:
