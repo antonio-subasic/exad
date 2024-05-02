@@ -10,7 +10,7 @@ It is built for the [HTBLA Leonding](https://www.htl-leonding.at), but should al
 
 1. Download the [source code](https://github.com/antoniosubasic/exad/archive/refs/heads/main.zip)
 1. Unzip the folder
-1. When running `dotnet run` for the first time, the config file is automatically generated in `~/.exad/config.json`
+1. When running `dotnet run` for the first time, the config file is automatically generated in `~/.config/exad/config.json`
 1. In the `config.json` configure the following:
     - `calendar-id` (optional): The ID of the Google Calendar to push the exams to (I recommend [creating a new calendar](https://calendar.google.com/calendar/u/0/r/settings/createcalendar), so the program doesn't have to mess with your personal calendar)
     - `schoolurl`: The URL which WebUnits uses for the school (to get it, go to your school's WebUntis page and copy the domain, e.g.: `mese.webuntis.com`)
