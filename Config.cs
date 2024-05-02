@@ -6,7 +6,7 @@ namespace Exad.Config;
 public class Config
 {
     [JsonIgnore]
-    public static string Folder = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".config", "exad");
+    public static string Folder => System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".config", "exad");
 
     [JsonIgnore]
     public static string Path = System.IO.Path.Combine(Folder, "config.json");
@@ -31,15 +31,17 @@ public class Config
     public string Password { get; init; } = "";
 
 
-    public static Config Load()
+    public static Config? TryLoad()
     {
-        if (!File.Exists(Path)) { throw new Exception("config file does not exist"); }
+        if (File.Exists(Path))
+        {
+            return JsonSerializer.Deserialize<Config>(File.ReadAllText(Path)) ?? throw new Exception("failed to parse config");
+        }
         else
         {
-            var config = JsonSerializer.Deserialize<Config>(File.ReadAllText(Path)) ?? throw new Exception("config file is empty");
-            
-            if (config is null) { throw new Exception("config file is empty"); }
-            else { return config; }
+            if (!Directory.Exists(Folder)) { Directory.CreateDirectory(Folder); }
+            File.WriteAllText(Path, JsonSerializer.Serialize(new Config(), new JsonSerializerOptions { WriteIndented = true }));
+            return null;
         }
     }
 }

@@ -4,7 +4,6 @@ using Google.Apis.Auth.OAuth2;
 using Google.Apis.Services;
 using Google.Apis.Calendar.v3;
 using Google.Apis.Calendar.v3.Data;
-using Google.Apis.Util.Store;
 using Exad.Classes;
 
 namespace Exad.Apis.Webuntis
@@ -26,7 +25,7 @@ namespace Exad.Apis.Webuntis
 
         private bool _loggedIn { get; set; }
 
-        public Session(Exad.Config.Config config)
+        public Session(Config.Config config)
             : this(config.SchoolUrl, config.SchoolName, config.Username, config.Password) { }
 
 
@@ -145,7 +144,7 @@ namespace Exad.Apis.Google
 
             credential = await GoogleWebAuthorizationBroker.AuthorizeAsync(
                 GoogleClientSecrets.FromStream(stream).Secrets,
-                new[] { CalendarService.Scope.CalendarEvents },
+                [CalendarService.Scope.CalendarEvents],
                 "user",
                 CancellationToken.None
             );
